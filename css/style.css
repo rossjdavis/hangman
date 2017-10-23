@@ -1,0 +1,41 @@
+body {
+  display: flex;
+  flex-flow: column nowrap;
+}
+
+#hangtree-outer-container {
+  border-bottom: 4px solid black;
+  width: 300px;
+  margin: 50px auto;
+}
+
+#hangtree-inner-container {
+  border-right: 2px solid black;
+  width: 250px;
+  height: 300px;
+  position: relative;
+}
+
+#hangtree-top {
+  border-top: 2px solid black;
+  width: 125px;
+  position: absolute;
+  right: 0px;
+}
+
+#hangtree-hook {
+  border-left: 2px solid black;
+  width: 125px;
+  height: 25px;
+  position: absolute;
+  left: 0px;
+}
+
+#hangtree-support {
+  border-bottom: 2px solid black;
+  width: 75px;
+  position: absolute;
+  right: 0px;
+  transform: rotateX(50%);
+  transform: rotateY(50%);
+}
