@@ -1,15 +1,20 @@
 main {
   display: flex;
-  flex-flow: column nowrap;
+  flex-direction: column;
+}
+
+section {
+  display: flex;
+  align-self: center;
+  justify-content: center;
 }
 
 #outer-container {
   display: flex;
-  align-self: center;
   border-bottom: 4px solid black;
   height: 300px; width: 300px;
   margin: 50px auto;
-  position: absolute;
+  position: relative;
 }
 
 #tree-top {
@@ -28,7 +33,6 @@ main {
 
 #inner-container {
   display: flex;
-  align-self: center;
   border-right: 2px solid black;
   height: 300px; width: 200px;
   margin: 50px auto;
@@ -85,6 +89,7 @@ main {
 #word-input {
   display: flex;
   flex-direction: row;
+  position: relative;
 }
 
 #game-board {
