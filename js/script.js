@@ -31,6 +31,7 @@ $(document).ready(function() {
       if (!this.model.hiddenWord) {
         this.model.addLetters(this.textInput.val())
         this.addLetterBoxes()
+        this.textInput.val("")
       } else if (this.textInput.upperCase() === this.model.hiddenWord) {
         //declare Winner
       } else {
@@ -40,11 +41,10 @@ $(document).ready(function() {
     addLetterBoxes() {
       this.model.lettersPresent.forEach((obj) => {
         if (obj === " ") {
-          let character = `<div class='letter-space'></div>`
+          this.gameBoard.append(`<div class='letter-space'></div>`)
         } else {
-          let character = `<div class='letter-boxes' data-letter='${obj}'></div>`
+          this.gameBoard.append(`<div class='letter-boxes' data-letter='${obj}'></div>`)
         }
-        this.gameBoard.appendItem(character)
       })
     }
   }

@@ -88,7 +88,6 @@ section {
 
 #word-input {
   display: flex;
-  flex-direction: row;
   position: relative;
 }
 
@@ -98,8 +97,12 @@ section {
 }
 
 .letter-boxes {
-  height: 20px;
-  width: 20px;
+  height: 40px; width: 40px;
   border: 2px dashed black;
+  margin: 10px;
+}
+
+.letter-space {
+  height: 40px; width: 40px;
   margin: 10px;
 }
