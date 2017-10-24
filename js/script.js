@@ -1,6 +1,6 @@
 $(document).ready(function() {
 
-  class Hangman() {
+  class Hangman {
     constructor() {
       this.lettersPresent = []
       this.lettersCrossed = []
@@ -8,14 +8,16 @@ $(document).ready(function() {
     }
     addLetters(input) {
       this.hiddenWord = input.toUpperCase()
-      for (let i = 0; this.hiddenWord.length; i++) {
+      console.log(this.hiddenWord)
+      for (let i = 0; i < this.hiddenWord.length; i++) {
         this.lettersPresent.push(this.hiddenWord[i])
+        console.log[i]
       }
       console.log(this.letterPresent)
     }
   }
 
-  class Game() {
+  class Game {
     constructor() {
       this.model = new Hangman()
       this.textInput = $('#text-input')
@@ -23,11 +25,11 @@ $(document).ready(function() {
       this.letterBoxes = $('.letter-boxes')
       this.gameBoard = $('#game-board')
 
-      this.textButton.click() => {}
+      this.textButton.click(() => this.parseInput())
     }
     parseInput() {
       if (!this.model.hiddenWord) {
-        this.model.addLetters(this.textInput)
+        this.model.addLetters(this.textInput.val())
         this.addLetterBoxes()
       } else if (this.textInput.upperCase() === this.model.hiddenWord) {
         //declare Winner
@@ -46,5 +48,5 @@ $(document).ready(function() {
       })
     }
   }
-  const Hangman = new Game()
+  const hangman = new Game()
 })

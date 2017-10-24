@@ -4,58 +4,82 @@ main {
 }
 
 #outer-container {
+  display: flex;
+  align-self: center;
   border-bottom: 4px solid black;
-  width: 300px;
+  height: 300px; width: 300px;
   margin: 50px auto;
+  position: absolute;
 }
 
 #tree-top {
   border-top: 2px solid black;
   width: 125px;
-  float: right;
-  margin-right: 48px;
-
+  margin-right: 50px;
+  position: absolute;
+  right: 0;
 }
 
 #tree-hook {
-  border-right: 2px solid black;
+  border-right: 2px dotted black;
   height: 25px; width: 125px;
+  position: absolute;
 }
 
 #inner-container {
+  display: flex;
+  align-self: center;
   border-right: 2px solid black;
-  height: 300px; width: 250px;
+  height: 300px; width: 200px;
+  margin: 50px auto;
+  position: absolute;
 }
 
 #head {
   border: 3px solid black;
   border-radius: 30px;
   height: 50px; width: 50px;
+  position: absolute;
+  top: 25px; right: 95px;
 }
 
 #body {
-  border-left: 4px solid black;
+  border-left: 2px solid black;
   height: 100px;
+  position: absolute;
+  top: 80px; right: 122px;
 }
 
 #left-arm {
-  border-left: 3px solid black;
-  width: 60px;
+  border-left: 2px solid black;
+  height: 60px;
+  transform: rotate(120deg);
+  position: absolute;
+  top: 70px; left: 51px;
 }
 
 #right-arm {
-  border-right: 3px solid black;
-  width: 60px;
+  border-right: 2px solid black;
+  height: 60px;
+  transform: rotate(60deg);
+  position: absolute;
+  top: 70px; right: 97px;
 }
 
 #left-leg {
-  border-left: 3px solid black;
+  border-left: 2px solid black;
   height: 70px;
+  transform: rotate(45deg);
+  position: absolute;
+  top: 170px; left: 51px;
 }
 
 #right-leg {
-  border-right: 3px solid black;
+  border-right: 2px solid black;
   height: 70px;
+  transform: rotate(135deg);
+  position: absolute;
+  top: 170px; right: 97px;
 }
 
 #word-input {
