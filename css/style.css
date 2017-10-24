@@ -3,7 +3,6 @@ main {
   flex-flow: column nowrap;
 }
 
-
 #outer-container {
   border-bottom: 4px solid black;
   width: 300px;
@@ -57,4 +56,21 @@ main {
 #right-leg {
   border-right: 3px solid black;
   height: 70px;
+}
+
+#word-input {
+  display: flex;
+  flex-direction: row;
+}
+
+#game-board {
+  display: flex;
+  flex-flow: row wrap;
+}
+
+.letter-boxes {
+  height: 20px;
+  width: 20px;
+  border: 2px dashed black;
+  margin: 10px;
 }
