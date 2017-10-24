@@ -1,41 +1,60 @@
-body {
+main {
   display: flex;
   flex-flow: column nowrap;
 }
 
-#hangtree-outer-container {
+
+#outer-container {
   border-bottom: 4px solid black;
   width: 300px;
   margin: 50px auto;
 }
 
-#hangtree-inner-container {
-  border-right: 2px solid black;
-  width: 250px;
-  height: 300px;
-  position: relative;
-}
-
-#hangtree-top {
+#tree-top {
   border-top: 2px solid black;
   width: 125px;
-  position: absolute;
-  right: 0px;
+  float: right;
+  margin-right: 48px;
+
 }
 
-#hangtree-hook {
-  border-left: 2px solid black;
-  width: 125px;
-  height: 25px;
-  position: absolute;
-  left: 0px;
+#tree-hook {
+  border-right: 2px solid black;
+  height: 25px; width: 125px;
 }
 
-#hangtree-support {
-  border-bottom: 2px solid black;
-  width: 75px;
-  position: absolute;
-  right: 0px;
-  transform: rotateX(50%);
-  transform: rotateY(50%);
+#inner-container {
+  border-right: 2px solid black;
+  height: 300px; width: 250px;
+}
+
+#head {
+  border: 3px solid black;
+  border-radius: 30px;
+  height: 50px; width: 50px;
+}
+
+#body {
+  border-left: 4px solid black;
+  height: 100px;
+}
+
+#left-arm {
+  border-left: 3px solid black;
+  width: 60px;
+}
+
+#right-arm {
+  border-right: 3px solid black;
+  width: 60px;
+}
+
+#left-leg {
+  border-left: 3px solid black;
+  height: 70px;
+}
+
+#right-leg {
+  border-right: 3px solid black;
+  height: 70px;
 }
