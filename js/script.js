@@ -41,7 +41,7 @@ $(document).ready(function() {
     }
     parseInput() {
       if (!this.model.hiddenWord) {
-        this.textButton.val('Guess')
+        this.textButton.text('Guess')
         this.model.addLetters(this.textInput.val().toUpperCase())
         this.addLetterBoxes()
       } else if (this.textInput.val().toUpperCase() === this.model.hiddenWord) {
