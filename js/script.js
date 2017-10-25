@@ -17,9 +17,9 @@ $(document).ready(function() {
       return this.moves
     }
     checkForMatch(input) {
-      this.lettersPresent.some((obj) => {
+      return this.lettersPresent.some((obj) => {
         if (obj === input) {
-          return input
+          return true
         } else {
           this.lettersCrossed.push(input)
           return false
@@ -33,7 +33,7 @@ $(document).ready(function() {
       this.model = new Hangman()
       this.textInput = $('#text-input')
       this.textButton = $('#text-button')
-      this.letterBoxes = $('.letter-boxes')
+      this.letterBoxes = []
       this.gameBoard = $('#game-board')
       this.graveyard = $('#graveyard')
 
@@ -41,7 +41,7 @@ $(document).ready(function() {
     }
     parseInput() {
       let input = this.textInput.val().toUpperCase()
-      if (!this.inputIsEmpty(input)) {
+      if (this.notEmpty(input)) {
         if (!this.model.hiddenWord) {
           this.model.addLetters(input)
           this.addLetterBoxes()
@@ -50,15 +50,14 @@ $(document).ready(function() {
           //declare Winner
         } else {
           let matched = (this.model.checkForMatch(input))
-          console.log(matched)
           this.flipLetterBoxes(matched, input)
         }
         this.textInput.val("")
       }
     }
 
-    inputIsEmpty(input) {
-      if (!input.length === 0) {
+    notEmpty(input) {
+      if (input.length !== 0) {
         return input
       }
     }
@@ -70,17 +69,19 @@ $(document).ready(function() {
         } else {
           this.gameBoard.append(`<div class='letter-boxes' data-letter='${obj}'></div>`)
         }
+
+        this.letterBoxes = $('.letter-boxes')
       })
     }
     flipLetterBoxes(matched, input) {
-      if (!matched) {
-        this.graveyard.append(`<div class='letter-grave' data-letter='${input}'>${input}</div>`)
-      } else {
-        this.letterBoxes.forEach((obj) => {
-          if (matched.some(obj.data('letter'))) {
-            obj.val(obj.data('letter'))
+      if (matched) {
+        this.letterBoxes.each(( i, element ) => {
+          if (input === element.dataset.letter) {
+            element.innerHTML = input
           }
         })
+      } else {
+        this.graveyard.append(`<div class='letter-grave' data-letter='${input}'>${input}</div>`)
       }
     }
   }
