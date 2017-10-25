@@ -13,8 +13,14 @@ header {
   display: flex;
   justify-content: space-between;
   background-color: grey;
-  height: 50px;
+  height: 55px;
   font-family: helvetica, sans-serif;
+}
+
+#graveyard {
+  display: flex;
+  flex-direction: row;
+  align-self: center;
 }
 
 #score-container {

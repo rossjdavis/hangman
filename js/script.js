@@ -7,13 +7,25 @@ $(document).ready(function() {
       this.moves = 0
     }
     addLetters(input) {
-      this.hiddenWord = input.toUpperCase()
-      console.log(this.hiddenWord)
+      this.hiddenWord = input
       for (let i = 0; i < this.hiddenWord.length; i++) {
         this.lettersPresent.push(this.hiddenWord[i])
-        console.log[i]
       }
-      console.log(this.letterPresent)
+    }
+    checkForMatch(input) {
+      this.lettersPresent.some((obj) => {
+        if (obj === input) {
+          return this.matchedLetters(input)
+        } else {
+          this.lettersCrossed.push(input)
+          return false
+        }
+      })
+    }
+    matchedLetters(input) {
+      let letters = this.lettersPresent.filter((obj) => {
+        return obj === input
+      })
     }
   }
 
@@ -24,18 +36,21 @@ $(document).ready(function() {
       this.textButton = $('#text-button')
       this.letterBoxes = $('.letter-boxes')
       this.gameBoard = $('#game-board')
+      this.graveyard = $('#graveyard')
 
       this.textButton.click(() => this.parseInput())
     }
     parseInput() {
       if (!this.model.hiddenWord) {
-        this.model.addLetters(this.textInput.val())
+        this.model.addLetters(this.textInput.val().toUpperCase())
         this.addLetterBoxes()
         this.textInput.val("")
-      } else if (this.textInput.upperCase() === this.model.hiddenWord) {
+      } else if (this.textInput.val().toUpperCase() === this.model.hiddenWord) {
         //declare Winner
       } else {
-        //compare Input
+        let matched = (this.model.checkForMatch(this.textInput.val().toUpperCase()))
+        console.log(matched)
+        this.flipLetterBoxes(matched, this.textInput.val().toUpperCase())
       }
     }
     addLetterBoxes() {
@@ -46,6 +61,18 @@ $(document).ready(function() {
           this.gameBoard.append(`<div class='letter-boxes' data-letter='${obj}'></div>`)
         }
       })
+    }
+    flipLetterBoxes(matched, obj) {
+      if (!matched) {
+        console.log(matched)
+        this.graveyard.append(`<div class='letter-boxes' data-letter='${obj}'></div>`)
+      } else {
+        this.letterBoxes.forEach((x) => {
+          if (matched.some(x.data('letter'))) {
+            x.val(x.data('letter'))
+          }
+        })
+      }
     }
   }
   const hangman = new Game()
