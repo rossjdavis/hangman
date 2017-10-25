@@ -40,18 +40,27 @@ $(document).ready(function() {
       this.textButton.click(() => this.parseInput())
     }
     parseInput() {
-      if (!this.model.hiddenWord) {
-        this.textButton.text('Guess')
-        this.model.addLetters(this.textInput.val().toUpperCase())
-        this.addLetterBoxes()
-      } else if (this.textInput.val().toUpperCase() === this.model.hiddenWord) {
-        //declare Winner
-      } else {
-        let matched = (this.model.checkForMatch(this.textInput.val().toUpperCase()))
-        console.log(matched)
-        this.flipLetterBoxes(matched, this.textInput.val().toUpperCase())
+      let input = this.textInput.val().toUpperCase()
+      if (!this.inputIsEmpty(input) {
+        if (!this.model.hiddenWord) {
+          this.textButton.text('Guess')
+          this.model.addLetters(input)
+          this.addLetterBoxes()
+        } else if (input === this.model.hiddenWord) {
+          //declare Winner
+        } else {
+          let matched = (this.model.checkForMatch(input))
+          console.log(matched)
+          this.flipLetterBoxes(matched, input)
+        }
+        this.textInput.val("")
       }
-      this.textInput.val("")
+    }
+
+    inputIsEmpty(input) {
+      if (!input.length === 0) {}
+        return input
+      }
     }
 
     addLetterBoxes() {
