@@ -32,7 +32,7 @@ $(document).ready(function() {
         }
       })
     }
-    
+
     isDuplicate(input) {
       return this.lettersCrossed.some((obj) => {
         if (obj === input) {
@@ -53,15 +53,14 @@ $(document).ready(function() {
       this.graveyard = $('#graveyard')
 
       this.textButton.click(() => this.parseInput())
-
-      $('#word-input').on('keydown', '#text-input', this.parseEnter)
+      this.textInput.keypress(this.parseEnter)
 
     }
 
-    parseEnter(evt, ) {
-      let key = evt.which
+    parseEnter(event) {
+      let key = event.which
       if (key === 13) {
-        evt.preventDefault()
+        event.preventDefault()
         $('#text-button').click()
       }
     }
