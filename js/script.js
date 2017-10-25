@@ -33,7 +33,6 @@ $(document).ready(function() {
       this.model = new Hangman()
       this.textInput = $('#text-input')
       this.textButton = $('#text-button')
-      this.letterBoxes = []
       this.gameBoard = $('#game-board')
       this.graveyard = $('#graveyard')
 
@@ -69,20 +68,23 @@ $(document).ready(function() {
         } else {
           this.gameBoard.append(`<div class='letter-boxes' data-letter='${obj}'></div>`)
         }
-
-        this.letterBoxes = $('.letter-boxes')
       })
     }
     flipLetterBoxes(matched, input) {
       if (matched) {
-        this.letterBoxes.each(( i, element ) => {
+        $('.letter-boxes').each((i, element) => {
           if (input === element.dataset.letter) {
             element.innerHTML = input
           }
         })
       } else {
         this.graveyard.append(`<div class='letter-grave' data-letter='${input}'>${input}</div>`)
+        this.hangBodyPart()
       }
+    }
+    
+    hangBodyPart() {
+      $('.hangman-zero').first().removeClass('hangman-zero')
     }
   }
   const hangman = new Game()
