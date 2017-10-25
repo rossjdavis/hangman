@@ -136,6 +136,15 @@ header, footer {
   margin-bottom: 40px;
 }
 
+#game-over {
+  display: flex;
+  align-self: center;
+  font-size: 75px;
+  position: absolute;
+  letter-spacing: .5em;
+  color: red; opacity: 0.2;
+}
+
 .letter-boxes, .letter-space, .letter-grave {
   display: flex;
   justify-content: space-around;

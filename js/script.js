@@ -42,6 +42,13 @@ $(document).ready(function() {
         }
       })
     }
+
+    resetGame() {
+      delete this.hiddenWord
+      this.lettersPresent = []
+      this.lettersCrossed = []
+      this.moves = 0
+    }
   }
 
   class Game {
@@ -73,7 +80,7 @@ $(document).ready(function() {
           this.addLetterBoxes()
           this.textButton.text('Guess')
         } else if (input === this.model.hiddenWord) {
-          //declare Winner
+          this.declareWinner()
         } else {
           let matched = (this.model.checkForMatch(input))
           this.flipLetterBoxes(matched, input)
@@ -118,8 +125,22 @@ $(document).ready(function() {
 
     isGameOver() {
       if (this.model.addMoves()===6) {
-        console.log("game over")
+        $('#game-over').text('GAME OVER')
+        this.resetGame()
       }
+    }
+
+    declareWinner() {
+      $('#game-over').text('YOU WIN')
+      this.model.lettersPresent.forEach((obj) => {
+        this.flipLetterBoxes(true, obj)
+      })
+      this.resetGame()
+    }
+
+    resetGame() {
+      this.model.resetGame()
+      this.textButton.text('Set Word')
     }
   }
   const hangman = new Game()
