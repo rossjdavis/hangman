@@ -41,9 +41,9 @@ $(document).ready(function() {
     }
     parseInput() {
       if (!this.model.hiddenWord) {
+        this.textButton.val('Guess')
         this.model.addLetters(this.textInput.val().toUpperCase())
         this.addLetterBoxes()
-        this.textInput.val("")
       } else if (this.textInput.val().toUpperCase() === this.model.hiddenWord) {
         //declare Winner
       } else {
@@ -51,6 +51,7 @@ $(document).ready(function() {
         console.log(matched)
         this.flipLetterBoxes(matched, this.textInput.val().toUpperCase())
       }
+      this.textInput.val("")
     }
 
     addLetterBoxes() {
