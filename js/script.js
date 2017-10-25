@@ -33,6 +33,10 @@ $(document).ready(function() {
       })
     }
 
+    checkForWinner() {
+
+    }
+
     isDuplicate(input) {
       return this.lettersCrossed.some((obj) => {
         if (obj === input) {
@@ -54,10 +58,12 @@ $(document).ready(function() {
   class Game {
     constructor() {
       this.model = new Hangman()
-      this.textInput = $('#text-input')
       this.textButton = $('#text-button')
+      this.textInput = $('#text-input')
       this.gameBoard = $('#game-board')
+      this.gameState = $('#game-state')
       this.graveyard = $('#graveyard')
+      this.lettersPlayed = []
 
       this.textButton.click(() => this.parseInput())
       this.textInput.keypress(this.parseEnter)
@@ -76,6 +82,7 @@ $(document).ready(function() {
       let input = this.textInput.val().toUpperCase()
       if (this.inputHasValue(input)) {
         if (!this.model.hiddenWord) {
+          this.removeBody()
           this.model.addLetters(input)
           this.addLetterBoxes()
           this.textButton.text('Guess')
@@ -125,17 +132,33 @@ $(document).ready(function() {
 
     isGameOver() {
       if (this.model.addMoves()===6) {
-        $('#game-over').text('GAME OVER')
+        this.gameState.text('GAME OVER')
         this.resetGame()
       }
     }
 
     declareWinner() {
-      $('#game-over').text('YOU WIN')
+      this.gameState.text('WINNER')
       this.model.lettersPresent.forEach((obj) => {
         this.flipLetterBoxes(true, obj)
       })
       this.resetGame()
+    }
+
+    removeLetterBoxes() {
+      $('.letter-grave').each((i, element) => element.remove())
+      $('.letter-space').each((i, element) => element.remove())
+      $('.letter-boxes').each((i, element) => element.remove())
+      this.removeGameState()
+    }
+
+    removeBody() {
+      $('#inner-container').children().each(() => $(this).addClass('hangman-zero'))
+      this.removeLetterBoxes()
+    }
+
+    removeGameState() {
+      this.gameState.text("")
     }
 
     resetGame() {

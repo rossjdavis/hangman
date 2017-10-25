@@ -136,7 +136,7 @@ header, footer {
   margin-bottom: 40px;
 }
 
-#game-over {
+#game-state {
   display: flex;
   align-self: center;
   font-size: 75px;
