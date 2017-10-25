@@ -1,3 +1,7 @@
+body {
+  font-family: helvetica, sans-serif;
+}
+
 main {
   display: flex;
   flex-direction: column;
@@ -9,12 +13,11 @@ section {
   justify-content: center;
 }
 
-header {
+header, footer {
   display: flex;
   justify-content: space-between;
   background-color: grey;
   height: 55px;
-  font-family: helvetica, sans-serif;
 }
 
 #graveyard {

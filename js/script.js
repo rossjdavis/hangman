@@ -17,11 +17,23 @@ $(document).ready(function() {
       return this.moves
     }
     checkForMatch(input) {
+      let duplicate = this.isDuplicate(input)
       return this.lettersPresent.some((obj) => {
         if (obj === input) {
           return true
+        } else if (duplicate) {
+          return true
         } else {
           this.lettersCrossed.push(input)
+          return false
+        }
+      })
+    }
+    isDuplicate(input) {
+      return this.lettersCrossed.some((obj) => {
+        if (obj === input) {
+          return true
+        } else {
           return false
         }
       })
