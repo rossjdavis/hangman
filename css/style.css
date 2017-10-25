@@ -130,6 +130,9 @@ header {
 }
 
 .letter-boxes {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
   height: 40px; width: 40px;
   border: 2px dashed black;
   margin: 10px;
@@ -138,4 +141,18 @@ header {
 .letter-space {
   height: 40px; width: 40px;
   margin: 10px;
+}
+
+.letter-grave {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  height: 40px; width: 40px;
+  border: 2px dashed white;
+  margin: 10px;
+  color: white;
+}
+
+.hangman-zero {
+  display: none;
 }

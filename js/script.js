@@ -41,11 +41,11 @@ $(document).ready(function() {
     }
     parseInput() {
       let input = this.textInput.val().toUpperCase()
-      if (!this.inputIsEmpty(input) {
+      if (!this.inputIsEmpty(input)) {
         if (!this.model.hiddenWord) {
-          this.textButton.text('Guess')
           this.model.addLetters(input)
           this.addLetterBoxes()
+          this.textButton.text('Guess')
         } else if (input === this.model.hiddenWord) {
           //declare Winner
         } else {
@@ -58,7 +58,7 @@ $(document).ready(function() {
     }
 
     inputIsEmpty(input) {
-      if (!input.length === 0) {}
+      if (!input.length === 0) {
         return input
       }
     }
@@ -72,13 +72,13 @@ $(document).ready(function() {
         }
       })
     }
-    flipLetterBoxes(matched, obj) {
+    flipLetterBoxes(matched, input) {
       if (!matched) {
-        this.graveyard.append(`<div class='letter-boxes' data-letter='${obj}'></div>`)
+        this.graveyard.append(`<div class='letter-grave' data-letter='${input}'>${input}</div>`)
       } else {
-        this.letterBoxes.forEach((x) => {
-          if (matched.some(x.data('letter'))) {
-            x.val(x.data('letter'))
+        this.letterBoxes.forEach((obj) => {
+          if (matched.some(obj.data('letter'))) {
+            obj.val(obj.data('letter'))
           }
         })
       }
