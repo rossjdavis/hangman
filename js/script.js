@@ -6,16 +6,19 @@ $(document).ready(function() {
       this.lettersCrossed = []
       this.moves = 0
     }
+
     addLetters(input) {
       this.hiddenWord = input
       for (let i = 0; i < this.hiddenWord.length; i++) {
         this.lettersPresent.push(this.hiddenWord[i])
       }
     }
+
     addMoves() {
       this.moves++
       return this.moves
     }
+
     checkForMatch(input) {
       let duplicate = this.isDuplicate(input)
       return this.lettersPresent.some((obj) => {
@@ -29,6 +32,7 @@ $(document).ready(function() {
         }
       })
     }
+    
     isDuplicate(input) {
       return this.lettersCrossed.some((obj) => {
         if (obj === input) {
@@ -49,10 +53,22 @@ $(document).ready(function() {
       this.graveyard = $('#graveyard')
 
       this.textButton.click(() => this.parseInput())
+
+      $('#word-input').on('keydown', '#text-input', this.parseEnter)
+
     }
+
+    parseEnter(evt, ) {
+      let key = evt.which
+      if (key === 13) {
+        evt.preventDefault()
+        $('#text-button').click()
+      }
+    }
+
     parseInput() {
       let input = this.textInput.val().toUpperCase()
-      if (this.notEmpty(input)) {
+      if (this.inputHasValue(input)) {
         if (!this.model.hiddenWord) {
           this.model.addLetters(input)
           this.addLetterBoxes()
@@ -67,7 +83,7 @@ $(document).ready(function() {
       }
     }
 
-    notEmpty(input) {
+    inputHasValue(input) {
       if (input.length !== 0) {
         return input
       }
@@ -82,6 +98,7 @@ $(document).ready(function() {
         }
       })
     }
+
     flipLetterBoxes(matched, input) {
       if (matched) {
         $('.letter-boxes').each((i, element) => {
