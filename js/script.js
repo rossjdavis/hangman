@@ -82,9 +82,16 @@ $(document).ready(function() {
         this.hangBodyPart()
       }
     }
-    
+
     hangBodyPart() {
       $('.hangman-zero').first().removeClass('hangman-zero')
+      this.isGameOver()
+    }
+
+    isGameOver() {
+      if (this.model.addMoves()===6) {
+        console.log("game over")
+      }
     }
   }
   const hangman = new Game()
