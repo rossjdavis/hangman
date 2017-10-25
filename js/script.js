@@ -12,19 +12,18 @@ $(document).ready(function() {
         this.lettersPresent.push(this.hiddenWord[i])
       }
     }
+    addMoves() {
+      this.moves++
+      return this.moves
+    }
     checkForMatch(input) {
       this.lettersPresent.some((obj) => {
         if (obj === input) {
-          return this.matchedLetters(input)
+          return input
         } else {
           this.lettersCrossed.push(input)
           return false
         }
-      })
-    }
-    matchedLetters(input) {
-      let letters = this.lettersPresent.filter((obj) => {
-        return obj === input
       })
     }
   }
@@ -53,6 +52,7 @@ $(document).ready(function() {
         this.flipLetterBoxes(matched, this.textInput.val().toUpperCase())
       }
     }
+
     addLetterBoxes() {
       this.model.lettersPresent.forEach((obj) => {
         if (obj === " ") {
@@ -64,7 +64,6 @@ $(document).ready(function() {
     }
     flipLetterBoxes(matched, obj) {
       if (!matched) {
-        console.log(matched)
         this.graveyard.append(`<div class='letter-boxes' data-letter='${obj}'></div>`)
       } else {
         this.letterBoxes.forEach((x) => {
