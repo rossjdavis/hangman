@@ -33,9 +33,28 @@ $(document).ready(function() {
       })
     }
 
-    checkForWinner() {
-
-    }
+    isWinner(playedLetters) {
+      // this.lettersPresent.forEach((obj) => {
+      //   playedLetters.children().each((i, element) => {
+      //     if (element.innerHTML !== obj) {
+      //       return false
+      //     } else if (i === this.lettersPresent.length-1) {
+      //       return true
+      //     }
+      //   })
+      // })
+      playedLetters.children().each((i, element) => {
+        this.lettersPresent.forEach((obj) => {
+          console.log('ele' + element.innerHTML)
+          console.log('obj' + obj)
+          if (element.innerHTML !== obj) {
+            return false
+          } else if (i === this.lettersPresent.length-1) {
+            return true
+          }
+        })
+      })
+     }
 
     isDuplicate(input) {
       return this.lettersCrossed.some((obj) => {
@@ -63,7 +82,6 @@ $(document).ready(function() {
       this.gameBoard = $('#game-board')
       this.gameState = $('#game-state')
       this.graveyard = $('#graveyard')
-      this.lettersPlayed = []
 
       this.textButton.click(() => this.parseInput())
       this.textInput.keypress(this.parseEnter)
@@ -89,7 +107,7 @@ $(document).ready(function() {
         } else if (input === this.model.hiddenWord) {
           this.declareWinner()
         } else {
-          let matched = (this.model.checkForMatch(input))
+          let matched = this.model.checkForMatch(input)
           this.flipLetterBoxes(matched, input)
         }
         this.textInput.val("")
@@ -105,11 +123,19 @@ $(document).ready(function() {
     addLetterBoxes() {
       this.model.lettersPresent.forEach((obj) => {
         if (obj === " ") {
-          this.gameBoard.append(`<div class='letter-space'></div>`)
+          this.gameBoard.append(`<div class='letter-space data-letter=" "'></div>`)
         } else {
           this.gameBoard.append(`<div class='letter-boxes' data-letter='${obj}'></div>`)
         }
       })
+    }
+
+    checkForWinner() {
+      let playedLetters = $('#game-board')
+      if (this.model.isWinner(playedLetters))
+      {
+        this.declareWinner()
+      }
     }
 
     flipLetterBoxes(matched, input) {
@@ -123,6 +149,7 @@ $(document).ready(function() {
         this.graveyard.append(`<div class='letter-grave' data-letter='${input}'>${input}</div>`)
         this.hangBodyPart()
       }
+      this.checkForWinner()
     }
 
     hangBodyPart() {
@@ -153,7 +180,7 @@ $(document).ready(function() {
     }
 
     removeBody() {
-      $('#inner-container').children().each(() => $(this).addClass('hangman-zero'))
+      $('#inner-container').children().each((i, element) => element.className = 'hangman-zero')
       this.removeLetterBoxes()
     }
 

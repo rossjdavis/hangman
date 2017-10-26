@@ -141,7 +141,7 @@ header, footer {
   align-self: center;
   font-size: 75px;
   position: absolute;
-  letter-spacing: .5em;
+  text-align: justify;
   color: red; opacity: 0.2;
 }
 
