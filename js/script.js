@@ -33,36 +33,22 @@ $(document).ready(function() {
       })
     }
 
-    isWinner(playedLetters) {
-      // this.lettersPresent.forEach((obj) => {
-      //   playedLetters.children().each((i, element) => {
-      //     if (element.innerHTML !== obj) {
-      //       return false
-      //     } else if (i === this.lettersPresent.length-1) {
-      //       return true
-      //     }
-      //   })
-      // })
-      playedLetters.children().each((i, element) => {
-        this.lettersPresent.forEach((obj) => {
-          console.log('ele' + element.innerHTML)
-          console.log('obj' + obj)
-          if (element.innerHTML !== obj) {
-            return false
-          } else if (i === this.lettersPresent.length-1) {
-            return true
-          }
-        })
+    isWinner(flippedLetters) {
+      let visibleWord = ""
+      flippedLetters.each((i, element) => {
+        if (element.classList.contains('flipped') ) {
+          visibleWord += element.dataset.letter
+        } else if (element.classList.contains('letter-space')) {
+          visibleWord += `\u0020`
+        }
       })
-     }
+      console.log(visibleWord)
+      return visibleWord === this.hiddenWord ? true : false
+    }
 
     isDuplicate(input) {
       return this.lettersCrossed.some((obj) => {
-        if (obj === input) {
-          return true
-        } else {
-          return false
-        }
+        return obj === input ? true : false
       })
     }
 
@@ -115,15 +101,13 @@ $(document).ready(function() {
     }
 
     inputHasValue(input) {
-      if (input.length !== 0) {
-        return input
-      }
+      return input.length !== 0 ? true : false
     }
 
     addLetterBoxes() {
       this.model.lettersPresent.forEach((obj) => {
         if (obj === " ") {
-          this.gameBoard.append(`<div class='letter-space data-letter=" "'></div>`)
+          this.gameBoard.append(`<div class='letter-space'></div>`)
         } else {
           this.gameBoard.append(`<div class='letter-boxes' data-letter='${obj}'></div>`)
         }
@@ -131,11 +115,8 @@ $(document).ready(function() {
     }
 
     checkForWinner() {
-      let playedLetters = $('#game-board')
-      if (this.model.isWinner(playedLetters))
-      {
-        this.declareWinner()
-      }
+      let flippedLetters = $('#game-board').children()
+      return this.model.isWinner(flippedLetters) ? this.declareWinner() : false
     }
 
     flipLetterBoxes(matched, input) {
@@ -143,6 +124,7 @@ $(document).ready(function() {
         $('.letter-boxes').each((i, element) => {
           if (input === element.dataset.letter) {
             element.innerHTML = input
+            element.classList.add('flipped')
           }
         })
       } else {
