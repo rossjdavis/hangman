@@ -3,8 +3,6 @@
 
 The purpose of this application is to deploy the Hangman game in the browser.
 
-[logo]:"image.png"
-
 ## The rules are simple:
 * Player One chooses a word and clicks 'Set Word'
 * Player Two will enter letter or phrase guesses into the box and click 'Guess'
@@ -23,4 +21,4 @@ The purpose of this application is to deploy the Hangman game in the browser.
 * JavaScript and JQuery (where I wasn't forced to use standard DOM manipulation).
 
 ## Installation
-1. Fork and clone the (https://github.com/rossjdavis/hangman/tree/gh-pages "project repository").
+1. Fork and clone the [project repsository](https://github.com/rossjdavis/hangman/tree/gh-pages")
