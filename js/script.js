@@ -173,6 +173,8 @@ $(document).ready(function() {
             //   .css("display", "flex");
             $("#description").text(word);
             $("#description").css("display", "flex");
+            // $("#description").css("top", 100);
+            // $("#description").css("margin-right");
           }
         },
         function() {
