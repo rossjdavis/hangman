@@ -19,7 +19,7 @@ The purpose of this application is to deploy the Hangman game in the browser.
 * I decided to take the Model/View approach in order to learn it
 * JavaScript and JQuery (where I wasn't forced to use standard JS for DOM manipulation)
 
-## Installation
+## Installation:
 1. Fork and clone the [project repsository](https://github.com/rossjdavis/hangman/tree/gh-pages")
 2. Navigate to the hangman folder
 ```
@@ -31,6 +31,6 @@ open index.html
 ```
 4. Enjoy!
 
-## Unsolved Problems
+## Unsolved Problems:
 * Cannot get the floating word positioned properly below it's corresponding box
 * It should justify right and grow to the left
