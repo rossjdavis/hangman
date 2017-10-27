@@ -67,6 +67,13 @@ $(document).ready(function() {
       this.textSource = $("#text-source");
       this.graveyard = $("#graveyard");
 
+      this.score = sessionStorage.getItem("score")
+        ? parseInt(sessionStorage.getItem("score"))
+        : 0;
+
+      this.scoreBoard = $("#score #value");
+      this.scoreBoard.text(this.score);
+
       this.textButton.click(() => this.parseInput());
       this.textSource.keypress(this.parseEnter);
     }
@@ -129,10 +136,17 @@ $(document).ready(function() {
             element.classList.add("flipped");
           }
         });
+        this.updateScore(5);
         this.checkForWinner(input);
       } else {
         this.addToGraveyard(input);
       }
+    }
+
+    updateScore(score) {
+      this.score += score;
+      this.scoreBoard.text(this.score);
+      sessionStorage.setItem("score", this.score);
     }
 
     addHoverToWord(input) {
@@ -218,6 +232,10 @@ $(document).ready(function() {
 
     removeGameState() {
       this.gameState.text("");
+    }
+
+    resetScore() {
+      sessionStorage.setItem("score", 0);
     }
 
     resetGame() {
