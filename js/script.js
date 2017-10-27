@@ -133,10 +133,7 @@ $(document).ready(function() {
         $(".letter-boxes").each((i, element) => {
           if (input === element.dataset.letter) {
             element.innerHTML = input;
-            element.classList.add("flipped");
-            element.style.background = "darkorange";
-            element.style.border = "1px dashed white";
-            element.style.color = "white";
+            updateStyle(element);
           }
         });
         this.updateScore(5);
@@ -144,6 +141,13 @@ $(document).ready(function() {
       } else {
         this.addToGraveyard(input);
       }
+    }
+
+    updateStyle(element) {
+      element.classList.add("flipped");
+      element.style.background = "darkorange";
+      element.style.border = "1px dashed white";
+      element.style.color = "white";
     }
 
     updateScore(score) {
