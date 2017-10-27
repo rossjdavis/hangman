@@ -17,7 +17,7 @@ The purpose of this application is to deploy the Hangman game in the browser.
 
 ## Technologies:
 * I decided to take the Model/View approach in order to learn it
-* JavaScript and JQuery (where I wasn't forced to use standard DOM manipulation)
+* JavaScript and JQuery (where I wasn't forced to use standard JS for DOM manipulation)
 
 ## Installation
 1. Fork and clone the [project repsository](https://github.com/rossjdavis/hangman/tree/gh-pages")
@@ -30,3 +30,7 @@ cd hangman
 open index.html
 ```
 4. Enjoy!
+
+## Unsolved Problems
+* Cannot get the floating word positioned properly below it's corresponding box
+* It should justify right and grow to the left
