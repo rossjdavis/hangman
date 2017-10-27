@@ -29,8 +29,6 @@ cd hangman
 ```
 open index.html
 ```
-4. Enjoy!
-
 ## Unsolved Problems:
 * Cannot get the floating word positioned properly below it's corresponding box
 * It should justify right and grow to the left
