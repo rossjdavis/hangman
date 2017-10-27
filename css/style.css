@@ -8,6 +8,7 @@ main {
   flex-direction: column;
   height: 100vh;
   min-height: 800px;
+  max-height: 1200px;
 }
 
 section {
@@ -63,7 +64,8 @@ footer {
   padding: 0 10px;
 }
 
-#outer-container {
+#outer-container,
+#inner-container {
   display: flex;
   border-bottom: 4px solid black;
   height: 300px;
@@ -88,9 +90,9 @@ footer {
 }
 
 #inner-container {
-  display: flex;
+  /*display: flex;*/
   border-right: 2px solid black;
-  height: 300px;
+  /*height: 300px;*/
   width: 200px;
   margin: 50px auto;
   position: absolute;
@@ -159,6 +161,7 @@ footer {
 #game-board {
   display: flex;
   flex-flow: row wrap;
+  margin: 0 75px;
 }
 
 #text-button {
@@ -201,7 +204,7 @@ footer {
 
 .letter-space {
   border: none;
-  margin: 0;
+  margin: 10px 0;
 }
 
 .letter-grave {
@@ -211,6 +214,12 @@ footer {
 }
 .letter-hover {
   background-color: darkorange;
+}
+
+.flipped {
+  background: darkorange;
+  border-color: white;
+  color: white;
 }
 
 .hangman-zero {

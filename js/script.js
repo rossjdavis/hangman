@@ -76,6 +76,7 @@ $(document).ready(function() {
 
       this.textButton.click(() => this.parseInput());
       this.textSource.keypress(this.parseEnter);
+      this.scoreBoard.click(() => this.resetScore());
     }
 
     parseEnter(event) {
@@ -133,7 +134,8 @@ $(document).ready(function() {
         $(".letter-boxes").each((i, element) => {
           if (input === element.dataset.letter) {
             element.innerHTML = input;
-            updateStyle(element);
+            element.classList.add("flipped");
+            // updateStyle(element);
           }
         });
         this.updateScore(5);
@@ -143,12 +145,12 @@ $(document).ready(function() {
       }
     }
 
-    updateStyle(element) {
-      element.classList.add("flipped");
-      element.style.background = "darkorange";
-      element.style.border = "1px dashed white";
-      element.style.color = "white";
-    }
+    // updateStyle(element) {
+    //   element.classList.add("flipped");
+    //   element.style.background = "darkorange";
+    //   element.style.border = "1px dashed white";
+    //   element.style.color = "white";
+    // }
 
     updateScore(score) {
       this.score += score;
@@ -156,7 +158,7 @@ $(document).ready(function() {
       sessionStorage.setItem("score", this.score);
     }
 
-    addHoverToWord(input) {
+    addHoverToWord() {
       $(".letter-grave").hover(
         function() {
           if ($(this).text() === "@") {
@@ -178,9 +180,11 @@ $(document).ready(function() {
 
     addToGraveyard(input) {
       if (input.length > 1) {
-        let deadWord = `<div class='letter-grave' data-letter='${input}'>@</div>`;
-        this.graveyard.append(deadWord);
-        this.addHoverToWord(deadWord);
+        this.graveyard.append(
+          `<div class='letter-grave' data-letter='${input}'>@</div>`
+        );
+
+        this.addHoverToWord();
       } else {
         this.graveyard.append(
           `<div class='letter-grave' data-letter='${input}'>${input}</div>`
@@ -242,7 +246,8 @@ $(document).ready(function() {
     }
 
     resetScore() {
-      sessionStorage.setItem("score", 0);
+      this.score = 0;
+      this.updateScore(this.score);
     }
 
     resetGame() {
