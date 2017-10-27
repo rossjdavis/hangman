@@ -3,7 +3,7 @@
 
 The purpose of this application is to deploy the Hangman game in the browser.
 
-![alt text]("/image.png")
+[logo]:"image.png"
 
 ## The rules are simple:
 * Player One chooses a word and clicks 'Set Word'
@@ -17,3 +17,10 @@ The purpose of this application is to deploy the Hangman game in the browser.
 * Dead letters or words are visible in the upper right corner.
 * Hover over '@' to see the dead word or phrase.
 * You can guess individual letters, or the entire word or phrase.
+
+## Technologies:
+* I decided to take the Model/View approach in order to learn it.
+* JavaScript and JQuery (where I wasn't forced to use standard DOM manipulation).
+
+## Installation
+1. Fork and clone the (https://github.com/rossjdavis/hangman/tree/gh-pages "project repository").
