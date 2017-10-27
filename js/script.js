@@ -47,18 +47,7 @@ $(document).ready(function() {
           visibleWord += `\u0020`;
         }
       });
-      console.log(visibleWord);
       return visibleWord === this.hiddenWord ? true : false;
-    }
-
-    wordGuessed(flippedLetters) {
-      console.log(flippedLetters);
-      console.log(this.presentLetters);
-      if (flippedLetters.length !== this.presentLetters.length) {
-        return true;
-      } else {
-        return false;
-      }
     }
 
     resetGame() {
@@ -72,15 +61,14 @@ $(document).ready(function() {
   class Game {
     constructor() {
       this.model = new Hangman();
-      this.textButton = $("#text-button");
-      this.textInput = $("#text-input");
       this.gameBoard = $("#game-board");
       this.gameState = $("#game-state");
+      this.textButton = $("#text-button");
+      this.textSource = $("#text-source");
       this.graveyard = $("#graveyard");
-      this.flippedLetters = [];
 
       this.textButton.click(() => this.parseInput());
-      this.textInput.keypress(this.parseEnter);
+      this.textSource.keypress(this.parseEnter);
     }
 
     parseEnter(event) {
@@ -91,18 +79,22 @@ $(document).ready(function() {
     }
 
     parseInput() {
-      let input = this.textInput.val().toUpperCase();
-      if (this.inputHasValue(input)) {
-        if (!this.model.hiddenWord) {
-          this.startNewGame(input);
-        } else if (input === this.model.hiddenWord) {
-          this.declareWinner();
-        } else {
-          let matched = this.model.checkForMatch(input);
-          this.flipLetterBoxes(matched, input);
-        }
-        this.textInput.val("");
+      let input = this.textSource.val().toUpperCase();
+
+      if (!this.inputHasValue(input)) {
+        return;
       }
+
+      if (!this.model.hiddenWord) {
+        this.startNewGame(input);
+      } else if (input === this.model.hiddenWord) {
+        this.flipAllBoxes();
+      } else {
+        let matched = this.model.checkForMatch(input);
+        this.flipLetterBoxes(matched, input);
+      }
+
+      this.textSource.val("");
     }
 
     inputHasValue(input) {
@@ -110,6 +102,7 @@ $(document).ready(function() {
     }
 
     startNewGame(input) {
+      this.flippedLetters = [];
       this.removeBody();
       this.model.addLetters(input);
       this.addLetterBoxes();
@@ -138,21 +131,41 @@ $(document).ready(function() {
         });
         this.checkForWinner(input);
       } else {
-        this.graveyard.append(
-          `<div class='letter-grave' data-letter='${input}'>${input}</div>`
-        );
-        this.hangBodyPart();
+        this.addToGraveyard(input);
       }
     }
 
-    flipAllBoxes() {
-      if (this.flippedLetters.length !== this.model.presentLetters.length) {
-        // if (this.model.wordGuessed(this.flippedLetters)) {
-        this.model.presentLetters.forEach(obj => {
-          this.flipLetterBoxes(true, obj);
-        });
-        // }
+    addHoverToWord(input) {
+      $(".letter-grave").hover(
+        function() {
+          if ($(this).text() === "@") {
+            let offsetTop = $(this).offset().top;
+            let offsetLeft = $(this).offset().left;
+            $(this).addClass("letter-hover");
+            $("#graveyard-box").text($(this).data("letter"));
+            $("#graveyard-box").css("display", "block");
+            $("#graveyard-box").css("top", offsetTop + 50);
+            $("#graveyard-box").css("left", offsetLeft - 20);
+          }
+        },
+        function() {
+          $(this).removeClass("letter-hover");
+          $("#graveyard-box").css("display", "none");
+        }
+      );
+    }
+
+    addToGraveyard(input) {
+      if (input.length > 1) {
+        let deadWord = `<div class='letter-grave' data-letter='${input}'>@</div>`;
+        this.graveyard.append(deadWord);
+        this.addHoverToWord(deadWord);
+      } else {
+        this.graveyard.append(
+          `<div class='letter-grave' data-letter='${input}'>${input}</div>`
+        );
       }
+      this.hangBodyPart();
     }
 
     hangBodyPart() {
@@ -160,6 +173,14 @@ $(document).ready(function() {
         .first()
         .removeClass("hangman-zero");
       this.isGameOver();
+    }
+
+    flipAllBoxes() {
+      this.flippedLetters = $("#game-board").children();
+      this.flippedLetters.each((i, element) => {
+        this.flipLetterBoxes(true, element.dataset.letter);
+      });
+      this.declareWinner();
     }
 
     checkForWinner(input) {
@@ -177,7 +198,6 @@ $(document).ready(function() {
     }
 
     declareWinner() {
-      this.flipAllBoxes();
       this.gameState.text("WINNER");
       this.resetGame();
     }
