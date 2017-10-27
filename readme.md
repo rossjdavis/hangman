@@ -1,7 +1,8 @@
 # Hangman
-### by Ross Davis
 
 The purpose of this application is to deploy the Hangman game in the browser.
+
+![alt text]("./image.png")
 
 ## The rules are simple:
 * Player One chooses a word and clicks 'Set Word'
