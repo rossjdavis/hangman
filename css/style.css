@@ -24,8 +24,13 @@ header,
 footer {
   display: flex;
   justify-content: space-between;
-  background-color: grey;
   height: 55px;
+}
+
+footer {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
 }
 
 #graveyard {
@@ -47,7 +52,7 @@ footer {
 #score {
   display: flex;
   align-items: center;
-  color: white;
+  color: darkred;
   font-size: 20px;
   margin: auto 0 auto 20px;
   padding-left: 20px;
@@ -202,6 +207,7 @@ footer {
 .letter-grave {
   color: white;
   border-color: white;
+  background-color: darkred;
 }
 .letter-hover {
   background-color: darkorange;

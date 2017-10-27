@@ -134,6 +134,9 @@ $(document).ready(function() {
           if (input === element.dataset.letter) {
             element.innerHTML = input;
             element.classList.add("flipped");
+            element.style.background = "darkorange";
+            element.style.border = "1px dashed white";
+            element.style.color = "white";
           }
         });
         this.updateScore(5);
