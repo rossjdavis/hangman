@@ -2,7 +2,7 @@
 
 The purpose of this application is to deploy the Hangman game in the browser.
 
-![alt text]("./image.png"?raw=true)
+![screenshot]("https://github.io/rossjdavis/hangman/image.png")
 
 ## The rules are simple:
 * Player One chooses a word and clicks 'Set Word'
@@ -27,7 +27,7 @@ The purpose of this application is to deploy the Hangman game in the browser.
 ```
 cd hangman
 ```
-3. Run index.html
+3. Run the game
 ```
 open index.html
 ```
