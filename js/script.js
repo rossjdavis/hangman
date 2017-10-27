@@ -79,6 +79,11 @@ $(document).ready(function() {
       this.scoreBoard.click(() => this.resetScore());
     }
 
+    resetScore() {
+      this.score = 0;
+      this.updateScore(this.score);
+    }
+
     parseEnter(event) {
       if (event.which === 13) {
         event.preventDefault();
@@ -135,7 +140,6 @@ $(document).ready(function() {
           if (input === element.dataset.letter) {
             element.innerHTML = input;
             element.classList.add("flipped");
-            // updateStyle(element);
           }
         });
         this.updateScore(5);
@@ -162,18 +166,21 @@ $(document).ready(function() {
       $(".letter-grave").hover(
         function() {
           if ($(this).text() === "@") {
-            let offsetTop = $(this).offset().top;
-            let offsetLeft = $(this).offset().left;
+            let word = $(this).data("letter");
             $(this).addClass("letter-hover");
-            $("#graveyard #description").text($(this).data("letter"));
-            $("#graveyard #description").css("display", "block");
-            $("#graveyard #description").css("top", offsetTop + 50);
-            $("#graveyard #description").css("left", offsetLeft - 20);
+            // $(this)
+            //   .children()
+            //   .css("display", "flex");
+            $("#description").text(word);
+            $("#description").css("display", "flex");
           }
         },
         function() {
           $(this).removeClass("letter-hover");
-          $("#graveyard #description").css("display", "none");
+          // $(this)
+          //   .children()
+          //   .css("display", "none");
+          $("#description").css("display", "none");
         }
       );
     }
@@ -183,7 +190,6 @@ $(document).ready(function() {
         this.graveyard.append(
           `<div class='letter-grave' data-letter='${input}'>@</div>`
         );
-
         this.addHoverToWord();
       } else {
         this.graveyard.append(
@@ -192,6 +198,14 @@ $(document).ready(function() {
       }
       this.hangBodyPart();
     }
+
+    // addDescription(input) {
+    //   let element = this.graveyard.children().last();
+    //   element.append(`<span class='description'>${input}</span>`);
+    //   element.children().css("top", "200px");
+    //   element.children().css("z-index", 0);
+    //   this.addHoverToWord();
+    // }
 
     hangBodyPart() {
       $(".hangman-zero")
@@ -243,11 +257,6 @@ $(document).ready(function() {
 
     removeGameState() {
       this.gameState.text("");
-    }
-
-    resetScore() {
-      this.score = 0;
-      this.updateScore(this.score);
     }
 
     resetGame() {

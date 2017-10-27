@@ -41,13 +41,11 @@ footer {
   padding-right: 30px;
 }
 
-#graveyard #description {
-  position: absolute;
-  margin: 20px;
-  padding: 9px;
-  border: 1px solid darkorange;
+#description {
+  display: flex;
+  align-items: center;
   color: darkorange;
-  display: none;
+  float: right;
 }
 
 #score {
@@ -208,6 +206,7 @@ footer {
 }
 
 .letter-grave {
+  position: relative;
   color: white;
   border-color: white;
   background-color: darkred;
