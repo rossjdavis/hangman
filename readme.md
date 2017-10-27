@@ -2,8 +2,6 @@
 
 The purpose of this application is to deploy the Hangman game in the browser.
 
-![screenshot]("https://rossjdavis.github.io/hangman/image.png")
-
 ## The rules are simple:
 * Player One chooses a word and clicks 'Set Word'
 * Player Two will enter letter or phrase guesses into the box and click 'Guess'
