@@ -163,15 +163,15 @@ $(document).ready(function() {
             let offsetTop = $(this).offset().top;
             let offsetLeft = $(this).offset().left;
             $(this).addClass("letter-hover");
-            $("#graveyard-box").text($(this).data("letter"));
-            $("#graveyard-box").css("display", "block");
-            $("#graveyard-box").css("top", offsetTop + 50);
-            $("#graveyard-box").css("left", offsetLeft - 20);
+            $("#graveyard #description").text($(this).data("letter"));
+            $("#graveyard #description").css("display", "block");
+            $("#graveyard #description").css("top", offsetTop + 50);
+            $("#graveyard #description").css("left", offsetLeft - 20);
           }
         },
         function() {
           $(this).removeClass("letter-hover");
-          $("#graveyard-box").css("display", "none");
+          $("#graveyard #description").css("display", "none");
         }
       );
     }
