@@ -11,7 +11,7 @@ The purpose of this application is to deploy the Hangman game in the browser.
 * After game is complete, a new word or phrase can be entered.
 
 ## Features:
---* Score is visible in the upper left corner.
---* Dead letters or words are visible in the upper right corner.
---* Hover over '@' to see the dead word or phrase.
---* You can guess individual letters, or the entire word or phrase.
+* Score is visible in the upper left corner.
+* Dead letters or words are visible in the upper right corner.
+* Hover over '@' to see the dead word or phrase.
+* You can guess individual letters, or the entire word or phrase.
