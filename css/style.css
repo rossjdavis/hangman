@@ -42,9 +42,11 @@ footer {
 }
 
 #description {
-  display: flex;
-  align-items: center;
+  /*display: flex;*/
+  /*align-items: center;*/
   color: darkorange;
+  /*float: right;*/
+  position: absolute;
   float: right;
 }
 

@@ -141,8 +141,8 @@ $(document).ready(function() {
             element.innerHTML = input;
             element.classList.add("flipped");
           }
+          this.updateScore(5);
         });
-        this.updateScore(5);
         this.checkForWinner(input);
       } else {
         this.addToGraveyard(input);
@@ -165,20 +165,27 @@ $(document).ready(function() {
     addHoverToWord() {
       $(".letter-grave").hover(
         function() {
-          if ($(this).text() === "@") {
-            let word = $(this).data("letter");
-            $(this).addClass("letter-hover");
+          let self = $(this);
+          if (self.text() === "@") {
+            let word = self.data("letter");
+            let offset = self.offset().left + 30;
+            console.log(offset);
+            self.addClass("letter-hover");
             // $(this)
             //   .children()
             //   .css("display", "flex");
             $("#description").text(word);
-            $("#description").css("display", "flex");
-            // $("#description").css("top", 100);
-            // $("#description").css("margin-right");
+            // $("#description").css("display", "flex");
+            $("#description").css("display", "block");
+            $("#description").css("top", 50);
+            $("#description").css("left", offset - self.outerWidth());
+            // $("#description").css("float", "left");
+            // $("#description").css("margin-right", position);
           }
         },
         function() {
-          $(this).removeClass("letter-hover");
+          let self = $(this);
+          self.removeClass("letter-hover");
           // $(this)
           //   .children()
           //   .css("display", "none");
