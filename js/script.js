@@ -138,23 +138,18 @@ $(document).ready(function() {
       if (matched) {
         $(".letter-boxes").each((i, element) => {
           if (input === element.dataset.letter) {
+            if (!element.classList.contains("flipped")) {
+              this.updateScore(5);
+            }
             element.innerHTML = input;
             element.classList.add("flipped");
           }
-          this.updateScore(5);
         });
         this.checkForWinner(input);
       } else {
         this.addToGraveyard(input);
       }
     }
-
-    // updateStyle(element) {
-    //   element.classList.add("flipped");
-    //   element.style.background = "darkorange";
-    //   element.style.border = "1px dashed white";
-    //   element.style.color = "white";
-    // }
 
     updateScore(score) {
       this.score += score;
@@ -168,27 +163,18 @@ $(document).ready(function() {
           let self = $(this);
           if (self.text() === "@") {
             let word = self.data("letter");
-            let offset = self.offset().left + 30;
+            let offset = self.offset().left;
             console.log(offset);
             self.addClass("letter-hover");
-            // $(this)
-            //   .children()
-            //   .css("display", "flex");
             $("#description").text(word);
-            // $("#description").css("display", "flex");
             $("#description").css("display", "block");
             $("#description").css("top", 50);
-            $("#description").css("left", offset - self.outerWidth());
-            // $("#description").css("float", "left");
-            // $("#description").css("margin-right", position);
+            $("#description").css("right", offset - self.outerWidth());
           }
         },
         function() {
           let self = $(this);
           self.removeClass("letter-hover");
-          // $(this)
-          //   .children()
-          //   .css("display", "none");
           $("#description").css("display", "none");
         }
       );
@@ -207,14 +193,6 @@ $(document).ready(function() {
       }
       this.hangBodyPart();
     }
-
-    // addDescription(input) {
-    //   let element = this.graveyard.children().last();
-    //   element.append(`<span class='description'>${input}</span>`);
-    //   element.children().css("top", "200px");
-    //   element.children().css("z-index", 0);
-    //   this.addHoverToWord();
-    // }
 
     hangBodyPart() {
       $(".hangman-zero")
