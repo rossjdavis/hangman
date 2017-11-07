@@ -13,8 +13,10 @@ main {
 
 section {
   display: flex;
-  align-self: center;
+  align-items: center;
   justify-content: center;
+  margin: 25px auto;
+  position: relative;
 }
 
 section:last-of-type {
@@ -24,28 +26,27 @@ section:last-of-type {
 header,
 footer {
   display: flex;
-  justify-content: space-between;
+  align-items: center;
   height: 55px;
 }
 
+header {
+  justify-content: space-between;
+  margin: 0 20px;
+}
+
 footer {
-  /*display: flex;*/
   justify-content: space-around;
-  align-items: center;
 }
 
 #graveyard {
   display: flex;
   flex-direction: row;
   align-self: center;
-  padding-right: 30px;
 }
 
 #description {
-  /*display: flex;*/
-  /*align-items: center;*/
   color: darkorange;
-  /*float: right;*/
   position: absolute;
   float: right;
 }
@@ -55,107 +56,99 @@ footer {
   align-items: center;
   color: darkred;
   font-size: 20px;
-  margin: auto 0 auto 20px;
-  padding-left: 20px;
+  padding: 0 10px;
 }
-#score #value {
+
+#value {
   color: darkorange;
   font-size: 45px;
   padding: 0 10px;
 }
 
-#outer-container,
-#inner-container {
+.tree {
   display: flex;
+  justify-content: center;
   border-bottom: 4px solid black;
   height: 300px;
   width: 300px;
-  margin: 50px auto;
   position: relative;
 }
 
-#tree-top {
+.tree__hook {
   border-top: 2px solid black;
+  border-left: 2px dotted black;
+  height: 25px;
   width: 125px;
   margin-right: 50px;
   position: absolute;
   right: 0;
 }
 
-#tree-hook {
-  border-right: 2px dotted black;
-  height: 25px;
-  width: 125px;
-  position: absolute;
-}
-
-#inner-container {
-  /*display: flex;*/
+.tree__side {
   border-right: 2px solid black;
-  /*height: 300px;*/
+  height: 300px;
   width: 200px;
-  margin: 50px auto;
   position: absolute;
 }
 
-#head {
+.body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: absolute;
+  top: 25px;
+}
+
+.body__head {
   border: 3px solid black;
   border-radius: 30px;
   height: 50px;
   width: 50px;
-  position: absolute;
-  top: 25px;
-  right: 95px;
 }
 
-#body {
+.body__torso {
   border-left: 2px solid black;
   height: 100px;
-  position: absolute;
-  top: 80px;
-  right: 122px;
 }
 
-#left-arm {
-  border-left: 2px solid black;
+.body__arm {
   height: 60px;
+  position: absolute;
+  top: 50px;
+}
+
+.body__arm-left {
+  border-left: 2px solid black;
   transform: rotate(120deg);
-  position: absolute;
-  top: 70px;
-  left: 51px;
+  left: 0;
 }
 
-#right-arm {
+.body__arm-right {
   border-right: 2px solid black;
-  height: 60px;
   transform: rotate(60deg);
+  right: 0;
+}
+.body__leg {
+  height: 75px;
   position: absolute;
-  top: 70px;
-  right: 97px;
+  top: 145px;
 }
 
-#left-leg {
+.body__leg-left {
   border-left: 2px solid black;
-  height: 70px;
   transform: rotate(45deg);
-  position: absolute;
-  top: 170px;
-  left: 51px;
+  left: 0;
 }
 
-#right-leg {
+.body__leg-right {
   border-right: 2px solid black;
-  height: 70px;
   transform: rotate(135deg);
-  position: absolute;
-  top: 170px;
-  right: 97px;
+  right: 0;
 }
 
 #word-input {
   display: flex;
   position: relative;
-  margin-bottom: 25px;
 }
 
 #game-board {
@@ -165,29 +158,19 @@ footer {
 }
 
 #text-button {
-  display: flex;
-  justify-content: center;
   height: 25px;
   width: 75px;
 }
 #text-source {
-  display: flex;
   text-align: center;
   margin-right: 20px;
 }
 
-#word-input {
-  margin-bottom: 40px;
-}
-
 #game-state {
-  display: flex;
-  align-self: center;
   font-size: 75px;
-  position: absolute;
-  text-align: justify;
   color: red;
   opacity: 0.2;
+  position: absolute;
 }
 
 .letter-boxes,
@@ -199,12 +182,12 @@ footer {
   height: 40px;
   width: 40px;
   border: 1px dashed black;
-  margin: 10px;
+  margin: 0 10px;
 }
 
 .letter-space {
   border: none;
-  margin: 10px 0;
+  margin: 0;
 }
 
 .letter-grave {
@@ -223,6 +206,6 @@ footer {
   color: white;
 }
 
-.hangman-zero {
+.zero {
   display: none;
 }

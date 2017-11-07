@@ -83,7 +83,7 @@ $(document).ready(function() {
         : 0
 
       // update the score in HTML
-      this.scoreBoard = $("#score #value")
+      this.scoreBoard = $("#value")
       this.scoreBoard.text(this.score)
 
       // add event listeners
@@ -222,11 +222,11 @@ $(document).ready(function() {
       this.hangBodyPart()
     }
 
-    // remove hangman-zero class from first element to display next body part
+    // remove zero class from first element to display next body part
     hangBodyPart() {
-      $(".hangman-zero")
+      $(".zero")
         .first()
-        .removeClass("hangman-zero")
+        .removeClass("zero")
       this.isGameOver()
     }
 
@@ -273,9 +273,9 @@ $(document).ready(function() {
 
     // loop through all body parts and remove them
     removeBody() {
-      $("#inner-container")
+      $(".body")
         .children()
-        .each((i, element) => (element.className = "hangman-zero"))
+        .each((i, element) => (element.className += " zero"))
       this.removeLetterBoxes()
     }
 

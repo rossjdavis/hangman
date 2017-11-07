@@ -2,28 +2,33 @@
 <html>
   <head>
     <title>Hangman</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href='./css/style.css' rel='stylesheet'>
     <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.slim.js'></script>
   </head>
   <body>
     <main>
       <header>
-        <div id='score'>SCORE<span id='value'></span></div>
-        <div id='graveyard'><span id='description'></div></div>
+        <div id='score'>SCORE
+          <span id='value'></span>
+        </div>
+        <div id='graveyard'>
+          <span id='description'></span>
+        </div>
       </header>
       <section>
         <div id='game-state'></div>
-        <div id='outer-container'>
-          <div id='tree-top'></div>
-          <div id='tree-hook'></div>
+        <div class='tree'>
+          <div class='tree__hook'></div>
+          <div class='tree__side'></div>
         </div>
-        <div id='inner-container'>
-          <div id='head' class='hangman-zero'></div>
-          <div id='body' class='hangman-zero'></div>
-          <div id='left-arm' class='hangman-zero'></div>
-          <div id='right-arm' class='hangman-zero'></div>
-          <div id='left-leg' class='hangman-zero'></div>
-          <div id='right-leg' class='hangman-zero'></div>
+        <div class='body'>
+          <div class='body__head zero'></div>
+          <div class='body__torso zero'></div>
+          <div class='body__arm body__arm-left zero'></div>
+          <div class='body__arm body__arm-right zero'></div>
+          <div class='body__leg body__leg-left zero'></div>
+          <div class='body__leg body__leg-right zero'></div>
         </div>
       </section>
       <section>
