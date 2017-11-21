@@ -182,38 +182,17 @@ $(document).ready(function() {
       sessionStorage.setItem("score", this.score)
     }
 
-    // word hovers under corresponding @ box
-    addHoverToWord() {
-      $(".letter-grave").hover(
-        function() {
-          let self = $(this)
-          if (self.text() === "@") {
-            let word = self.data("letter")
-            let offset = self.offset().left - 40
-            self.addClass("letter-hover")
-            $("#description").text(word)
-            $("#description").css("display", "block")
-            $("#description").css("top", 50)
-            $("#description").css("left", offset + self.outerWidth())
-          }
-        },
-        function() {
-          let self = $(this)
-          self.removeClass("letter-hover")
-          $("#description").css("display", "none")
-        }
-      )
-    }
-
     // add word to graveyard with @ symbol if length is > 1
     // otherwise add letter
     // then hang the next body part
     addToGraveyard(input) {
       if (input.length > 1) {
         this.graveyard.append(
-          `<div class='letter-grave' data-letter='${input}'>@</div>`
+          `<div class='letter-grave' data-letter='${input}'>
+            <span>@</span>
+            <span class='description'>${input}</span>
+          </div>`
         )
-        this.addHoverToWord()
       } else {
         this.graveyard.append(
           `<div class='letter-grave' data-letter='${input}'>${input}</div>`
