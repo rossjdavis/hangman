@@ -190,7 +190,7 @@ $(document).ready(function() {
         this.graveyard.append(
           `<div class='letter-grave' data-letter='${input}'>
             <span>@</span>
-            <span class='description'>${input}</span>
+            <span class='description>${input}</span>
           </div>`
         )
       } else {

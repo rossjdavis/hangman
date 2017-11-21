@@ -41,19 +41,13 @@ footer {
   justify-content: space-around;
 }
 
+/**********HEADER***********/
+
 #graveyard {
   display: flex;
   flex-direction: row;
   align-items: center;
   margin-top: 20px;
-}
-
-.description {
-  color: darkorange;
-  position: absolute;
-  right: 0;
-  top: 50px;
-  display: none;
 }
 
 #score {
@@ -69,6 +63,8 @@ footer {
   font-size: 45px;
   margin-left: 10px;
 }
+
+/***********TREE***********/
 
 .tree {
   display: flex;
@@ -95,6 +91,8 @@ footer {
   width: 200px;
   position: absolute;
 }
+
+/***********BODY***********/
 
 .body {
   display: flex;
@@ -152,6 +150,8 @@ footer {
   right: 0;
 }
 
+/**********JS-ID***********/
+
 #word-input {
   display: flex;
   position: relative;
@@ -178,6 +178,8 @@ footer {
   position: absolute;
 }
 
+/**********LETTERS*********/
+
 .letter-boxes,
 .letter-space,
 .letter-grave {
@@ -202,6 +204,14 @@ footer {
   background-color: darkred;
 }
 
+.description {
+  color: darkorange;
+  position: absolute;
+  right: 0;
+  top: 50px;
+  display: none;
+}
+
 /*********MODIFIERS*********/
 
 .letter-grave:hover {
@@ -211,7 +221,8 @@ footer {
 }
 
 .letter-grave:hover .description {
-  display: block;
+  display: flex;
+  flex-wrap: nowrap;
 }
 
 .flipped {
